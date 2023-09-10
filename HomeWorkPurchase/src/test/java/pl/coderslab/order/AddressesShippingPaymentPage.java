@@ -36,4 +36,3 @@ public class AddressesShippingPaymentPage {
         WebElement placeOrderBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'Place order')]")));
         placeOrderBtn.click();
     }
-
