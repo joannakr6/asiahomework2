@@ -1,11 +1,13 @@
-package pl.coderslab.order;
+Feature:Place a new order after login
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+  Scenario:Place a new order
+    Given I'm on the shop authentication page
+    When I login using "danbrown@gmail.com" and "123456789Dan"
+    And I'm looking for a product "Hummingbird Printed Sweater"
+    And I choose a product
+    Then I choose size, quantity and add to cart
+    And I click on option checkout
+    And I choose the address, shipping and payment methods and I agree to the terms
+    And Click Place order
+    And Take a screenshot with order confirmation and price
+    Then I close the browser
