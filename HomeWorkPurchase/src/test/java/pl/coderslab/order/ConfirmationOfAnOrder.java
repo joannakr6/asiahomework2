@@ -1,7 +1,5 @@
 package pl.coderslab.order;
 
-package pl.coderslab.order;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -27,4 +25,3 @@ public class ConfirmationOfAnOrder {
         }
     }
 }
-

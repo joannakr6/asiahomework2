@@ -1,5 +1,15 @@
 package pl.coderslab.order;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 public class AddressesShippingPaymentPage {
     private final WebDriver driver;
     private WebDriverWait wait;
@@ -36,3 +46,14 @@ public class AddressesShippingPaymentPage {
         WebElement placeOrderBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'Place order')]")));
         placeOrderBtn.click();
     }
+
+
+
+
+
+
+
+
+
+
+}

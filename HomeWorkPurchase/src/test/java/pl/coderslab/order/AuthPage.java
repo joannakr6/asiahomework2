@@ -1,45 +1,59 @@
 package pl.coderslab.order;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AuthPage {
+import java.time.Duration;
+
+public class AddressesShippingPaymentPage {
     private final WebDriver driver;
+    private WebDriverWait wait;
 
-    public AuthPage(WebDriver driver) {
+    public AddressesShippingPaymentPage (WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "_mobile_user_info")
-    private WebElement accountLoginBtn;
+    public void clickConfirmAddressBtn() {
+        WebElement confirmAddressBtn = wait.until(ExpectedConditions.elementToBeClickable(By.name("confirm-addresses")));
+        confirmAddressBtn.click();
+    }
+    public void clickConfirmShippingBtn() {
+        WebElement confirmShippingBtn = wait.until(ExpectedConditions.elementToBeClickable(By.name("confirmDeliveryOption")));
+        confirmShippingBtn.click();
 
-    @FindBy(id = "field-email")
-    public WebElement loginEmailInput;
-
-    @FindBy(name = "password")
-    private WebElement loginPasswordInput;
-
-    @FindBy(id = "submit-login")
-    private WebElement loginButton;
-
-    public AuthPage(WebDriver driver, WebElement accountLoginBtn, WebElement loginEmailInput, WebElement loginPasswordInput, WebElement loginButton) {
-        this.driver = driver;
-        this.accountLoginBtn = accountLoginBtn;
-        this.loginEmailInput = loginEmailInput;
-        this.loginPasswordInput = loginPasswordInput;
-        this.loginButton = loginButton;
     }
 
-    public void loginAs(String login, String passwd) {
-        loginEmailInput.clear();
-        loginEmailInput.sendKeys(login);
-
-        loginPasswordInput.clear();
-        loginPasswordInput.sendKeys(passwd);
-
-        loginButton.click();
+    public void selectPaymentMethod() {
+        WebElement paymentByCheck = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("payment-option-1")));
+        paymentByCheck.click();
     }
+
+    public void selectAgreeTerms() {
+        WebElement termsCheckbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("conditions_to_approve[terms-and-conditions]")));
+        if (!termsCheckbox.isSelected()) {
+            termsCheckbox.click();
+        }
+    }
+
+    public void placeOrder() {
+        WebElement placeOrderBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(text(), 'Place order')]")));
+        placeOrderBtn.click();
+    }
+
+
+
+
+
+
+
+
+
+
 }

@@ -20,4 +20,3 @@ public class ProceedToCheckOutPage {
         proceedToCheckoutBtn.click();
     }
 }
-
